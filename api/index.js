@@ -136,5 +136,22 @@ app.get("/post/:id", async (req, res) => {
   res.json(postDoc);
 });
 
+app.delete("/post/:id", async (req, res) => {
+  const { token } = req.cookies;
+  // jwt.verify(token, secret, {}, async (err, info) => {
+  //   if (err) throw err;
+  //   const { id } = req.body;
+  //   const postDoc = await Post.findById(id);
+  //   console.log(postDoc);
+  //   // res.json(postDoc);
+  // });
+  // const { id } = req.body;
+  // // Post.deleteOne(id);
+  // console.log(req.body);
+  console.log(req.params.id);
+  const data = await Post.deleteOne({ id: req.params.id });
+  console.log(data);
+});
+
 app.listen(4000);
 //
